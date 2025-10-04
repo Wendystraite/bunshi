@@ -236,7 +236,7 @@ strictModeSuite(({ wrapper, isStrict }) => {
         });
 
         if (isStrict) {
-          moleculeLifecycle.expectCalledTimesEach(2, 2, 1);
+          moleculeLifecycle.expectCalledTimesEach(1, 2, 1);
         } else {
           moleculeLifecycle.expectCalledTimesEach(1, 1, 0);
         }
@@ -248,7 +248,7 @@ strictModeSuite(({ wrapper, isStrict }) => {
         });
 
         if (isStrict) {
-          moleculeLifecycle.expectCalledTimesEach(2, 2, 1);
+          moleculeLifecycle.expectCalledTimesEach(1, 2, 1);
         } else {
           moleculeLifecycle.expectCalledTimesEach(1, 1, 0);
         }
@@ -257,7 +257,7 @@ strictModeSuite(({ wrapper, isStrict }) => {
         run1.unmount();
 
         if (isStrict) {
-          moleculeLifecycle.expectCalledTimesEach(2, 2, 1);
+          moleculeLifecycle.expectCalledTimesEach(1, 2, 1);
         } else {
           moleculeLifecycle.expectCalledTimesEach(1, 1, 0);
         }
@@ -265,7 +265,7 @@ strictModeSuite(({ wrapper, isStrict }) => {
         run2.unmount();
 
         if (isStrict) {
-          moleculeLifecycle.expectCalledTimesEach(2, 2, 2);
+          moleculeLifecycle.expectCalledTimesEach(1, 2, 2);
         } else {
           moleculeLifecycle.expectCalledTimesEach(1, 1, 1);
         }
@@ -376,8 +376,8 @@ strictModeSuite(({ wrapper, isStrict }) => {
       let before: LifecycleUtilsTuple;
       let after: LifecycleUtilsTuple;
       if (isStrict) {
-        before = [4, 2, 1];
-        after = [4, 2, 2];
+        before = [2, 2, 1];
+        after = [2, 2, 2];
       } else {
         before = [2, 1, 0];
         after = [2, 1, 1];
@@ -414,8 +414,8 @@ strictModeSuite(({ wrapper, isStrict }) => {
       let before: LifecycleUtilsTuple;
       let after: LifecycleUtilsTuple;
       if (isStrict) {
-        before = [6, 2, 1];
-        after = [6, 2, 2];
+        before = [3, 2, 1];
+        after = [3, 2, 2];
       } else {
         before = [3, 1, 0];
         after = [3, 1, 1];
@@ -646,9 +646,9 @@ strictModeSuite(({ wrapper, isStrict }) => {
 
     function expectActiveMounted() {
       if (isStrict) {
-        // Then execution are called twice
-        // Because once for each render in strict mode
-        expect(lifecycle.executions).toBeCalledTimes(2);
+        // Then execution is called once
+        // Because useMemo memoizes the value between renders even in strict mode
+        expect(lifecycle.executions).toBeCalledTimes(1);
         // Then mounts are called twice
         // Because of useEffects called twice in strict mode
         expect(lifecycle.mounts).toBeCalledTimes(2);
@@ -687,7 +687,7 @@ strictModeSuite(({ wrapper, isStrict }) => {
     run2.unmount();
 
     if (isStrict) {
-      expect(lifecycle.executions).toBeCalledTimes(2);
+      expect(lifecycle.executions).toBeCalledTimes(1);
       expect(lifecycle.mounts).toBeCalledTimes(2);
       // Unmounts are called
       expect(lifecycle.unmounts).toBeCalledTimes(2);
