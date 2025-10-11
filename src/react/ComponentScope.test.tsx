@@ -80,7 +80,7 @@ strictModeSuite(({ wrapper, isStrict }) => {
       testOneCounter(ComponentScopedCountMolecule, 1);
 
       if (isStrict) {
-        expect(compLifecycle.executions).toHaveBeenCalledTimes(2);
+        expect(compLifecycle.executions).toHaveBeenCalledTimes(1);
         expect(compLifecycle.mounts).toHaveBeenCalledTimes(2);
         expect(compLifecycle.unmounts).toHaveBeenCalledTimes(2);
       } else {
@@ -98,7 +98,7 @@ strictModeSuite(({ wrapper, isStrict }) => {
         expected2: 1,
       });
       if (isStrict) {
-        expect(compLifecycle.executions).toHaveBeenCalledTimes(4);
+        expect(compLifecycle.executions).toHaveBeenCalledTimes(2);
         expect(compLifecycle.mounts).toHaveBeenCalledTimes(4);
         expect(compLifecycle.unmounts).toHaveBeenCalledTimes(4);
       } else {
@@ -116,7 +116,7 @@ strictModeSuite(({ wrapper, isStrict }) => {
         expected2: 0,
       });
       if (isStrict) {
-        expect(compLifecycle.executions).toHaveBeenCalledTimes(4);
+        expect(compLifecycle.executions).toHaveBeenCalledTimes(2);
         expect(compLifecycle.mounts).toHaveBeenCalledTimes(4);
         expect(compLifecycle.unmounts).toHaveBeenCalledTimes(4);
       } else {
@@ -133,7 +133,7 @@ strictModeSuite(({ wrapper, isStrict }) => {
         expected2: 1,
       });
       if (isStrict) {
-        expect(compLifecycle.executions).toHaveBeenCalledTimes(4);
+        expect(compLifecycle.executions).toHaveBeenCalledTimes(2);
         expect(compLifecycle.mounts).toHaveBeenCalledTimes(4);
         expect(compLifecycle.unmounts).toHaveBeenCalledTimes(4);
       } else {

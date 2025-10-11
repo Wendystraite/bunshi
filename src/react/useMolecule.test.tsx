@@ -460,8 +460,8 @@ strictModeSuite(({ wrapper, isStrict }) => {
       let beforeRenders: number;
       let afterRenders: number;
       if (isStrict) {
-        before = [8, 2, 1];
-        after = [8, 2, 2];
+        before = [4, 2, 1];
+        after = [4, 2, 2];
         beforeRenders = 4;
         afterRenders = 4 + 2;
       } else {
